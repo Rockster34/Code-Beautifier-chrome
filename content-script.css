@@ -1,0 +1,88 @@
+body > * {
+    transition: opacity .2s ease-out, transform .2s ease-out;
+}
+
+#cbBar {
+    transform: translate3d(0, -37px, 0);
+}
+
+body.autoformat #cbBar {
+    transform: none;
+}
+
+body.autoformat .CodeMirror {
+    animation: none;
+}
+
+body.showCbBar pre {
+    transform: translate3d(0, 37px, 0);
+}
+
+body.showCbBar #cbBar {
+    transform: none;
+}
+
+body.processing {
+    cursor: wait;
+    pointer-events: none;
+}
+
+body.processing > :not(#cbBar) {
+    opacity: .5;
+}
+
+.CodeBeautifier {
+    margin: 0;
+    font-size: 13px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    white-space: pre-wrap;
+    font: inherit;
+    color: inherit;
+    table-layout: fixed;
+}
+
+td {
+    padding: 0;
+    vertical-align: baseline;
+}
+
+@keyframes CodeMirrorIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 37px, 0);
+    }
+}
+
+.CodeMirror {
+    height: auto;
+    min-height: 100vh;
+    tab-size: 4;
+    animation: CodeMirrorIn .2s;
+}
+
+.CodeMirror-gutter-wrapper,
+.CodeMirror-gutter-elt {
+    position: static;
+}
+
+.CodeMirror-gutters {
+    z-index: 1;
+}
+
+.CodeMirror-gutters .CodeMirror-linenumber {
+    visibility: hidden;
+}
+
+.CodeMirror-code {
+    position: relative;
+    z-index: 2;
+}
+
+.CodeMirror-linenumber::before {
+    content: attr(data-n);
+}
